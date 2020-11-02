@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 
 #include <vector>
 #include <iostream>
@@ -151,12 +152,18 @@ int main() {
     char dummy[1000];
     char buffer[1000];
 
+    size_t missing = 0;
     for (size_t i = 0; i < n; ++i) {
         scanf("%s%s%s", dummy, dummy, buffer);
         if (buffer[0] != 'M') {
             sscanf(buffer, "%lf", &prices[i]);
         } else {
             prices[i] = 0;
+            ++missing;
+            sprintf(dummy, "Missing_%zd", missing);
+            if (strcmp(buffer, dummy)) {
+                throw exception();
+            }
         }
     }
     auto oldPrices = prices;
