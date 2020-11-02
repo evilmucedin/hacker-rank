@@ -28,7 +28,7 @@ ostream& operator<<(ostream& s, const DoubleVector& v) {
 }
 
 ostream& operator<<(ostream& s, const DoubleMatrix& m) {
-    for (const auto& v: m) {
+    for (const auto& v : m) {
         s << v << endl;
     }
     s << endl;
@@ -66,7 +66,7 @@ DoubleMatrix inverse(const DoubleMatrix& m) {
     };
 
     auto mulLine = [&](size_t i, double m) {
-        for (size_t j = 0; j < 2*n; ++j) {
+        for (size_t j = 0; j < 2 * n; ++j) {
             g[i][j] *= m;
         }
     };
@@ -153,7 +153,7 @@ int main() {
 
         double result = 0;
         for (size_t j = 0; j < numFeatures + 1; ++j) {
-            result += beta[j]*x[j];
+            result += beta[j] * x[j];
         }
         cout << result << endl;
     }
